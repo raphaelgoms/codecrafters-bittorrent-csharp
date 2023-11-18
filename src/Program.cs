@@ -31,6 +31,17 @@ if (command == "decode")
            throw new InvalidOperationException("Invalid encoded value: " + encodedValue);
        }
     }
+    else if (encodedValue.StartsWith('i') && encodedValue.EndsWith('e')) 
+    { 
+        var encodedInt = encodedValue.Substring(encodedValue.IndexOf('i') + 1, encodedValue.IndexOf('e') - 1); 
+        bool parsed = int.TryParse(encodedInt,  out int decodedInt);
+
+        if (parsed) {
+            Console.WriteLine(JsonSerializer.Serialize(decodedInt));
+        } else {
+            throw new InvalidOperationException("Invalid encoded value: " + encodedInt);
+        }     
+    }   
     else
     {
        throw new InvalidOperationException("Unhandled encoded value: " + encodedValue);
