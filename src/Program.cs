@@ -34,7 +34,7 @@ if (command == "decode")
     else if (encodedValue.StartsWith('i') && encodedValue.EndsWith('e')) 
     { 
         var encodedInt = encodedValue.Substring(encodedValue.IndexOf('i') + 1, encodedValue.IndexOf('e') - 1); 
-        bool parsed = int.TryParse(encodedInt,  out int decodedInt);
+        bool parsed = Int64.TryParse(encodedInt,  out Int64 decodedInt);
 
         if (parsed) {
             Console.WriteLine(JsonSerializer.Serialize(decodedInt));
